@@ -1,0 +1,1 @@
+﻿INSERT INTO Pessoa (Nome, Nascimento) VALUES ('PessoaDb', '2001-12-31');

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _20GRPED.MVC.A10.MvcAdoNet.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ namespace _20GRPED.MVC.A10.MvcAdoNet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSingleton<IPessoaRepository, PessoaMdfRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

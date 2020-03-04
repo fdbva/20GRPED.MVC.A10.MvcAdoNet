@@ -1,19 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using _20GRPED.MVC.A10.MvcAdoNet.Models;
+﻿using _20GRPED.MVC.A10.MvcAdoNet.Models;
+using _20GRPED.MVC.A10.MvcAdoNet.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace _20GRPED.MVC.A10.MvcAdoNet.Controllers
 {
     public class PessoaController : Controller
     {
-        public IActionResult Index()
+        private readonly IPessoaRepository _pessoaRepository;
+
+        public PessoaController(
+            IPessoaRepository pessoaRepository)
         {
-            return View();
+            _pessoaRepository = pessoaRepository;
         }
 
+        public IActionResult Index()
+        {
+            var pessoas = _pessoaRepository.GetAll();
+            return View(pessoas);
+        }
 
         // GET: Product/Create
         public ActionResult Create()
